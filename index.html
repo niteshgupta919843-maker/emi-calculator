@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f4">
+  <title>EMI Calculator — Plan your next move</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Nivara home"><span class="brand-mark">n</span><span>nivara<span class="brand-dot">.</span></span></a>
+    <div class="topbar-note"><span class="live-dot"></span> Your money, made clearer</div>
+    <a class="help-link" href="mailto:hello@nivara.example">Need a hand? <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="eyebrow"><span>PLAN WITH CONFIDENCE</span><i></i><span>01 / 01</span></div>
+      <h1>A little clarity.<br><span>A lot more confidence.</span></h1>
+      <p>Get a quick, no-pressure picture of what your monthly loan payment could look like.</p>
+    </section>
+
+    <section class="calculator" aria-label="EMI calculator">
+      <div class="form-panel">
+        <div class="panel-heading"><div><span class="section-index">01</span><h2>Your loan details</h2></div><span class="edit-badge">● &nbsp;LIVE ESTIMATE</span></div>
+        <div class="field-block">
+          <div class="field-top"><label for="amount">Loan amount</label><span class="field-hint">How much do you need?</span></div>
+          <div class="input-wrap"><span class="currency">₹</span><input id="amount" type="number" min="10000" max="100000000" step="10000" value="2500000" inputmode="numeric" aria-label="Loan amount in rupees"><span class="unit">INR</span></div>
+          <input id="amountRange" class="range" type="range" min="100000" max="10000000" step="50000" value="2500000" aria-label="Adjust loan amount">
+          <div class="range-labels"><span>₹1 L</span><span>₹1 Cr</span></div>
+        </div>
+        <div class="field-block">
+          <div class="field-top"><label for="rate">Interest rate</label><span class="field-hint">Per year</span></div>
+          <div class="input-wrap"><input id="rate" type="number" min="0.1" max="30" step="0.1" value="8.5" inputmode="decimal" aria-label="Annual interest rate"><span class="unit">% P.A.</span></div>
+          <input id="rateRange" class="range" type="range" min="1" max="20" step="0.1" value="8.5" aria-label="Adjust interest rate">
+          <div class="range-labels"><span>1%</span><span>20%</span></div>
+        </div>
+        <div class="field-block tenure-block">
+          <div class="field-top"><label for="tenure">Loan tenure</label><span class="field-hint">Choose a comfortable timeline</span></div>
+          <div class="tenure-switch" role="group" aria-label="Tenure unit"><button type="button" class="active" data-unit="years" aria-pressed="true">Years</button><button type="button" data-unit="months" aria-pressed="false">Months</button></div>
+          <div class="input-wrap tenure-input"><input id="tenure" type="number" min="1" max="30" step="1" value="20" inputmode="numeric" aria-label="Loan tenure"><span class="unit" id="tenureUnit">YEARS</span></div>
+          <input id="tenureRange" class="range" type="range" min="1" max="30" step="1" value="20" aria-label="Adjust loan tenure">
+          <div class="range-labels"><span id="tenureMin">1 yr</span><span id="tenureMax">30 yrs</span></div>
+        </div>
+        <div class="secure-note"><span class="lock-icon">⌑</span><span>Your numbers stay on this device. Nothing is saved or shared.</span><span class="note-spark">✳</span></div>
+      </div>
+
+      <div class="result-panel">
+        <div class="result-top"><span class="result-label">YOUR ESTIMATED MONTHLY EMI</span><span class="result-icon">↗</span></div>
+        <div class="emi-amount"><span class="rupee">₹</span><output id="emi">21,696</output><span class="per-month">/ month</span></div>
+        <p class="result-caption">A steady step towards something yours.</p>
+        <div class="result-divider"></div>
+        <div class="breakdown-title"><h3>Payment breakdown</h3><span>OVER FULL LOAN TERM</span></div>
+        <div class="chart-row">
+          <div class="donut" id="donut" role="img" aria-label="Principal and interest breakdown"><div class="donut-center"><span>LOAN</span><strong id="chartTotal">₹25.0L</strong></div></div>
+          <div class="legend">
+            <div class="legend-item"><span class="legend-dot principal-dot"></span><div><span>Principal amount</span><strong id="principal">₹25,00,000</strong></div></div>
+            <div class="legend-item"><span class="legend-dot interest-dot"></span><div><span>Total interest</span><strong id="interest">₹27,07,155</strong></div></div>
+          </div>
+        </div>
+        <div class="total-row"><span>Total amount payable</span><strong id="total">₹52,07,155</strong></div>
+        <div class="fine-print"><span>✦</span> This is an estimate for planning purposes. Your lender’s final offer may vary.</div>
+        <button class="share-button" id="shareButton" type="button"><span>Copy estimate</span><span class="button-arrow">↗</span></button>
+        <p class="copy-status" id="copyStatus" aria-live="polite"></p>
+      </div>
+    </section>
+    <footer><span>Take your time. Make it yours.</span><span>Made for the moves that matter <b>✳</b></span></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
